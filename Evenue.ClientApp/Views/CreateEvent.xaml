@@ -1,0 +1,98 @@
+﻿<Page
+    x:Class="Evenue.ClientApp.Views.CreateEvent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Evenue.ClientApp.Views"
+    xmlns:ctl="using:Evenue.ClientApp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource AppBarBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <ctl:PageHeader Grid.Row="0">
+            <ctl:PageHeader.HeaderContent>
+                <TextBlock Text="CREATE NEW EVENT" Style="{ThemeResource PageTitleTextBlockStyle}" TextWrapping="NoWrap"/>
+            </ctl:PageHeader.HeaderContent>
+        </ctl:PageHeader>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" VerticalScrollMode="Enabled" Height="Auto">
+            <Grid EntranceNavigationTransitionInfo.IsTargetElement="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Title" Style="{StaticResource PageTitleTextBlockStyle}" Margin="15 0 15 0" VerticalAlignment="Center"/>
+                <TextBox x:Name="titleTextBox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" IsColorFontEnabled="True" Margin="15 0 15 0" />
+
+                <!--Location-->
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Location" Style="{StaticResource PageTitleTextBlockStyle}" Margin="15 0 15 0" VerticalAlignment="Center"/>
+                <TextBox x:Name="locationTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="15 0 15 0"/>
+
+                <!--Start Date-->
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Start Date" Style="{StaticResource PageTitleTextBlockStyle}" Margin="15 0 15 0" VerticalAlignment="Center"/>
+                <DatePicker x:Name="startDatePicker" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15 0 15 0"/>
+
+                <!--End Date-->
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="End Date" Style="{StaticResource PageTitleTextBlockStyle}" Margin="15 0 15 0" VerticalAlignment="Center"/>
+                <DatePicker x:Name="endDatePicker" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15 0 15 0" />
+
+                <!--Description-->
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Description" Style="{StaticResource PageTitleTextBlockStyle}" Margin="15 0 15 0" VerticalAlignment="Center"/>
+                <TextBox x:Name="descTextBox" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="15 15 15 15"/>
+
+                <!--Category-->
+                <TextBlock Grid.Row="6" Grid.Column="0" Text="Category" Style="{StaticResource PageTitleTextBlockStyle}" Margin="15 0 15 0" VerticalAlignment="Center"/>
+                <ComboBox x:Name="categoryComboBox" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="15 0 15 0">
+                  
+                </ComboBox>
+
+                <!--Fee-->
+                <TextBlock Grid.Row="7" Grid.Column="0" Text="Fee" Style="{StaticResource PageTitleTextBlockStyle}" Margin="15 0 15 0" VerticalAlignment="Center"/>
+                <Grid Grid.Row="7" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource PageTitleTextBlockStyle}" VerticalAlignment="Center" Text="Rp" Margin="15 0 0 0" />
+                    <TextBox  x:Name="feeTextBox" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="15 0 15 0" PlaceholderText="0"/>
+                </Grid>
+
+                <!--Browse Image-->
+                <TextBlock VerticalAlignment="Top" Grid.Row="8" Style="{StaticResource PageTitleTextBlockStyle}" Text="Image" Margin="15 15 0 0" />
+                <Grid Grid.Row="8" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="BrowseButton" Click="BrowseImage" Grid.Row="0" VerticalAlignment="Top" Margin="15 15 15 0">Browse</Button>
+                    <Image Source="../Assets/noimage.jpg" Grid.Row="1" Width="175" Height="125" Stretch="Fill" Margin="15 15 0 0" x:Name="imagePreview" HorizontalAlignment="Left"/>
+                </Grid>
+
+                <!--Save Button & Progress Ring-->
+                <ProgressRing Width="70" Height="70" x:Name="progressRing" Grid.Row="10" Grid.ColumnSpan="2" VerticalAlignment="Top" Visibility="Collapsed" IsActive="True"/>
+                <TextBlock x:Name="ValidationErrorText" Grid.Row="9" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="0 0 0 10" VerticalAlignment="Bottom" Text="Please fill in the remaining field" FontSize="13" Foreground="Red" Visibility="Collapsed"/>
+                <Button Margin="0 15 0 0" x:Name="SaveButton" Click="InsertEvent" Grid.Row="10" Grid.ColumnSpan="2"  Width="100" Background="PowderBlue" VerticalAlignment="Top" HorizontalAlignment="Center">Save</Button>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>
