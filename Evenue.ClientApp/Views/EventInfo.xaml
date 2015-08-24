@@ -26,6 +26,9 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" VerticalScrollMode="Enabled" Height="Auto">
             <Grid Grid.Row="1" >
+                <Grid.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="../Assets/event.jpg" Opacity="0.2"/>
+                </Grid.Background>
                 <GridView HorizontalAlignment="Center" IsItemClickEnabled="False" IsHitTestVisible="False" Margin="0 50 0 50">
                     <StackPanel Width="350" MinHeight="400" Padding="20 0 20 0" Margin="0 0 20 0">
                         <Image Source="{x:Bind _event.ImageUri}" Width="300" Height="200" Stretch="Fill">

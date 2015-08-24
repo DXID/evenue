@@ -137,6 +137,7 @@
     <None Include="Evenue.ClientApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\event.jpg" />
     <Content Include="Assets\fb_login.png" />
     <Content Include="Assets\icon-events.png" />
     <Content Include="Assets\login_background.jpg" />

@@ -49,6 +49,9 @@
                   Foreground="Black"
                   ItemClick="eventListGridView_ItemClick"
                   IsItemClickEnabled="True">
+            <GridView.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="../Assets/event.jpg" Opacity="0.2"/>
+            </GridView.Background>
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Padding="10 10 10 10" MaxWidth="240">

@@ -6,6 +6,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Evenue.ClientApp.Views;
 using Microsoft.WindowsAzure.MobileServices;
+using Windows.UI.ViewManagement;
+using Windows.UI;
 
 namespace Evenue.ClientApp
 {

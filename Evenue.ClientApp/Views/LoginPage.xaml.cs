@@ -8,6 +8,8 @@ using Windows.UI.Xaml.Controls;
 using Evenue.ClientApp.Models;
 using System.Diagnostics;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.ViewManagement;
+using Windows.UI;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +27,28 @@ namespace Evenue.ClientApp.Views
         public LoginPage()
         {
             this.InitializeComponent();
+
+            var view = ApplicationView.GetForCurrentView();
+
+            // Changing the background and the foreground color
+            view.TitleBar.BackgroundColor = Color.FromArgb(255, 0, 120, 215);
+            view.TitleBar.ForegroundColor = Colors.White;
+
+            // Changing other components such as color for button states
+            view.TitleBar.ButtonBackgroundColor = Color.FromArgb(255, 0, 120, 215);
+            view.TitleBar.ButtonForegroundColor = Colors.White;
+
+            view.TitleBar.ButtonHoverBackgroundColor = Colors.Blue;
+            view.TitleBar.ButtonHoverForegroundColor = Colors.White;
+
+            view.TitleBar.ButtonPressedBackgroundColor = Color.FromArgb(255, 0, 120, 0);
+            view.TitleBar.ButtonPressedForegroundColor = Colors.White;
+
+            view.TitleBar.ButtonInactiveBackgroundColor = Colors.DarkGray;
+            view.TitleBar.ButtonInactiveForegroundColor = Colors.Gray;
+
+            view.TitleBar.InactiveBackgroundColor = Colors.DarkBlue;
+            view.TitleBar.InactiveForegroundColor = Colors.Gray;
         }
 
         // Log the user in with specified provider (Microsoft Account or Facebook)

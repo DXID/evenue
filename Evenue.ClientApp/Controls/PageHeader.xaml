@@ -15,7 +15,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid x:Name="grid" Background="{x:Bind Background}">
+    <Grid x:Name="grid">
         <Grid x:Name="titleBar">
             <ContentPresenter x:Name="content"
                               VerticalAlignment="{x:Bind VerticalContentAlignment}"
