@@ -154,20 +154,8 @@ namespace Evenue.ClientApp.Views
                 _event.Category = categoryComboBox.SelectedItem.ToString();
                 _event.Fee = Int32.Parse(feeTextBox.Text);
 
-                try
-                {
-                    await eventTable.UpdateAsync(_event);
-                    MessageDialog msg = new MessageDialog("The Event is successfully updated");
-                    await msg.ShowAsync();
-                }
-                catch (Exception)
-                {
-                    MessageDialog msg = new MessageDialog("Problem occured, please retry again");
-                    await msg.ShowAsync();
-                }
-
                 // If we have a returned SAS, then upload the blob
-                if (!string.IsNullOrEmpty(_event.SasQueryString))
+                if (image != null)
                 {
                     // Get the URI generated that contains the SAS 
                     // and extract the storage credentials
@@ -187,15 +175,16 @@ namespace Evenue.ClientApp.Views
                             container.GetBlockBlobReference(_event.ResourceName);
                         await blobFromSASCredential.UploadFromStreamAsync(inputStream);
                     }
+                }
 
+                try
+                {
+                    await eventTable.UpdateAsync(_event);
                     MessageDialog msg = new MessageDialog("The Event is successfully updated");
                     await msg.ShowAsync();
                 }
-                else
+                catch (Exception)
                 {
-                    // Failed to upload image, delete the previously created event
-                    await eventTable.DeleteAsync(_event);
-
                     MessageDialog msg = new MessageDialog("Problem occured, please retry again");
                     await msg.ShowAsync();
                 }

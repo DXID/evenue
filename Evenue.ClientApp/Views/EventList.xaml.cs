@@ -1,6 +1,5 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -8,8 +7,6 @@ using Windows.UI.Xaml.Navigation;
 using Evenue.ClientApp.Models;
 using System.Diagnostics;
 using Evenue.ClientApp.Controls;
-using Windows.UI.ViewManagement;
-using Windows.UI;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -21,8 +18,7 @@ namespace Evenue.ClientApp.Views
     public sealed partial class EventList : Page
     {
         private MobileServiceCollection<Event, Event> events;
-        private IMobileServiceTable<Event> eventTable =
-            App.MobileService.GetTable<Event>();
+        private IMobileServiceTable<Event> eventTable;
 
         public EventList()
         {
@@ -33,6 +29,8 @@ namespace Evenue.ClientApp.Views
         // Refresh the item list each time we navigate to this page
         private async void RefreshEventList(string query)
         {
+            eventTable = App.MobileService.GetTable<Event>();
+
             if (query == null)
             {
                 try
@@ -51,6 +49,11 @@ namespace Evenue.ClientApp.Views
                     SearchBox.Visibility = Visibility.Visible;
                 }
                 eventListGridView.ItemsSource = events;
+                if(events.Count == 0)
+                {
+                    ErrorText.Text = "No Events Found";
+                    ErrorText.Visibility = Visibility.Visible;
+                }
             }
             else
             {
@@ -91,6 +94,7 @@ namespace Evenue.ClientApp.Views
             } 
         }
 
+        // Event handler when user choose a suggestion
         private void SearchBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             sender.Text = (args.SelectedItem as Event).ToString();

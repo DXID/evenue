@@ -9,6 +9,7 @@ using Evenue.MobileAppService.Models;
 using System;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System.Web.Configuration;
 
 namespace Evenue.MobileAppService.Controllers
 {
@@ -45,8 +46,8 @@ namespace Evenue.MobileAppService.Controllers
         public async Task<IHttpActionResult> PostEvent(Event item)
         {
             // Put the storage account name and key here. You can also take the value from the portal, or web.config file
-            string storageAccountName = "evenuestorage";
-            string storageAccountKey = "XVANOlxuWmagSH9uVtmHRlHfyoPj/L3wwd8bLu6HC2CGuDqa+QBnHo+GmgrZnQ/YJiN9+No8x2Pjs4LqDx0akw==";
+            string storageAccountName = WebConfigurationManager.AppSettings["STORAGE_ACCOUNT_NAME"];
+            string storageAccountKey = WebConfigurationManager.AppSettings["STORAGE_ACCOUNT_ACCESS_KEY"];
 
             // Set the URI for the Blob Storage service.
             Uri blobEndpoint = new Uri(string.Format("https://{0}.blob.core.windows.net", storageAccountName));
@@ -75,7 +76,7 @@ namespace Evenue.MobileAppService.Controllers
                 SharedAccessBlobPolicy sasPolicy = new SharedAccessBlobPolicy()
                 {
                     SharedAccessStartTime = DateTime.UtcNow,
-                    SharedAccessExpiryTime = DateTime.UtcNow.AddMinutes(5),
+                    SharedAccessExpiryTime = DateTime.MaxValue,
                     Permissions = SharedAccessBlobPermissions.Write
                 };
 

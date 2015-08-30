@@ -22,6 +22,9 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" VerticalScrollMode="Enabled" Height="Auto">
             <Grid EntranceNavigationTransitionInfo.IsTargetElement="True">
+                <Grid.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="../Assets/event.jpg" Opacity="0.2"/>
+                </Grid.Background>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
                     <RowDefinition Height="50" />
