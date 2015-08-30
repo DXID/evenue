@@ -19,11 +19,11 @@ namespace Evenue.ClientApp
         // Set the mobile service url
         public static MobileServiceClient MobileService =
             new MobileServiceClient(
-                "https://evenuebackendapi-code.azurewebsites.net",
-                "https://evenuebackendapi6dd2d0d6d39b4996904d8c524ab5462f.azurewebsites.net",
-                "cpMWMNajUuZNrqgHZBxDvpDOVoMaWE88"
+                "[Mobile App URL]",
+                "[Gateway URL]",
+                "[Application Key]"
             );
-        // Data Source=tcp:sfjd8875i4.database.windows.net,1433;Initial Catalog=EvenueBackEndAPI_db;User ID=evenue@sfjd8875i4;Password=
+        
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
