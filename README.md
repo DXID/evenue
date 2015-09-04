@@ -8,15 +8,14 @@ Fork or download this project and open the solution using Visual Studio 2015. Ma
 
 ## Tests
 
-Follow these steps to be able to run the application :
+Follow these steps to be able to run the application :  <br /><br />
 1. In Evenue.ClientApp, open app.xaml.cs and change the following template with the real data from your Azure Mobile App Service:
-
 ```cs
 public static MobileServiceClient MobileService =
   new MobileServiceClient(
     "[Mobile App URL]",
     "[Gateway URL]",
-    "[Application Key]"
+    ""
   );
 ```
 2. In Evenue.MobileAppService, change the following template with the real data from your Azure Mobile App Service and Azure Storage Account:
